@@ -9,30 +9,92 @@
 <body>
   <main class="page-shell page-center">
     <section class="dashboard-frame">
-      <div class="card dashboard-card">
+      <div class="card dashboard-card" id="welcomeScreen">
         <div class="dashboard-copy">
           <p class="eyebrow">All set</p>
           <h1 id="greeting">Hello 👋</h1>
-          <p>Welcome to ProdigalMath. Ready for your next algebra challenge?</p>
+          <p>Welcome to ProdigalMath. Our AI will analyze your preferences and tailor the best math path for you.</p>
         </div>
-        <button onclick="goToProblems()">Start Practicing</button>
+        <button id="startButton" class="primary-button">Start the questions</button>
+      </div>
+
+      <div class="card wizard-card hidden" id="wizardScreen">
+        <div class="wizard-header">
+          <p class="eyebrow">Question <span id="stepCounter">1</span> of 6</p>
+          <h1>Personalize your experience</h1>
+          <p>Your answers will shape the problems you see next.</p>
+        </div>
+
+        <div class="wizard-steps">
+          <div class="step active" data-step="1">
+            <p class="step-question">Which pronouns do you use?</p>
+            <div class="radio-grid">
+              <label><input type="radio" name="pronoun" value="he/him"> He/him</label>
+              <label><input type="radio" name="pronoun" value="she/her"> She/her</label>
+              <label><input type="radio" name="pronoun" value="they/them"> They/them</label>
+              <label><input type="radio" name="pronoun" value="other"> Other</label>
+            </div>
+            <input type="text" id="pronounOther" class="hidden" placeholder="Enter your pronouns" autocomplete="off">
+          </div>
+
+          <div class="step" data-step="2">
+            <p class="step-question">What is your MYP grade level?</p>
+            <select id="gradeSelect">
+              <option value="">Choose your grade</option>
+              <option value="MYP 1">MYP 1</option>
+              <option value="MYP 2">MYP 2</option>
+              <option value="MYP 3">MYP 3</option>
+              <option value="MYP 4">MYP 4</option>
+              <option value="MYP 5">MYP 5</option>
+            </select>
+          </div>
+
+          <div class="step" data-step="3">
+            <p class="step-question">What topic do you want to focus on?</p>
+            <textarea id="topicInput" rows="3" placeholder="e.g. quadratic equations, algebraic expressions"></textarea>
+            <label for="topicPdf" class="file-label">Or upload a PDF with your notes</label>
+            <input type="file" id="topicPdf" accept="application/pdf">
+            <p class="file-note">Optional. We’ll use the filename to personalize your next session.</p>
+          </div>
+
+          <div class="step" data-step="4">
+            <p class="step-question">Where did you hear about ProdigalMath?</p>
+            <select id="heardFrom">
+              <option value="">Choose an option</option>
+              <option value="Friend or family">Friend or family</option>
+              <option value="Teacher or tutor">Teacher or tutor</option>
+              <option value="Social media">Social media</option>
+              <option value="Search engine">Search engine</option>
+              <option value="Other">Other</option>
+            </select>
+            <input type="text" id="heardOther" class="hidden" placeholder="Tell us where" autocomplete="off">
+          </div>
+
+          <div class="step" data-step="5">
+            <p class="step-question">What is your main goal for using the app?</p>
+            <input type="text" id="goalInput" placeholder="e.g. improve grades, complete homework faster" autocomplete="off">
+          </div>
+
+          <div class="step" data-step="6">
+            <p class="step-question">How often would you like to practice?</p>
+            <select id="practiceFrequency">
+              <option value="">Choose one</option>
+              <option value="Daily">Daily</option>
+              <option value="Several times a week">Several times a week</option>
+              <option value="Weekly">Weekly</option>
+              <option value="A few times a month">A few times a month</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="wizard-actions">
+          <button id="nextButton" class="primary-button">Next</button>
+        </div>
+        <p id="wizardNotice" class="result-text">Your answers will shape the practice path.</p>
       </div>
     </section>
   </main>
 
-  <script>
-    function goToProblems() {
-      window.location.href = 'index.html';
-    }
-
-    window.onload = function() {
-      const username = localStorage.getItem('prodgicalmathLoggedInUser');
-      if (username) {
-        document.getElementById('greeting').textContent = `Hello ${username} 👋`;
-      } else {
-        window.location.href = 'login.html';
-      }
-    };
-  </script>
+  <script src="wizard.js"></script>
 </body>
 </html>
