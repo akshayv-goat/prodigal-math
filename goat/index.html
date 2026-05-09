@@ -7,123 +7,39 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="page-shell">
-    <section class="hero">
+  <main class="page-shell home-shell">
+    <section class="hero home-hero">
       <div class="hero-copy">
-        <p class="eyebrow">Smart practice for every math topic</p>
+        <p class="eyebrow">Fast MYP math practice</p>
         <h1>ProdigalMath</h1>
-        <p>Train your skills with fast, friendly math challenges and instant feedback.</p>
-      </div>
-      <div class="hero-card">
-        <div class="topic-selection">
-          <label for="category">Category</label>
-          <select id="category">
-            <option value="Algebra">Algebra</option>
-            <option value="Geometry">Geometry</option>
-            <option value="Arithmetic">Arithmetic</option>
-            <option value="Statistics">Statistics</option>
-          </select>
-          <label for="subtopic">Subtopic</label>
-          <select id="subtopic">
-            <option value="Quadratic Equations">Quadratic Equations</option>
-          </select>
+        <p>Choose the right grade to explore units and topics tailored to your syllabus.</p>
+        <div class="home-grade-buttons">
+          <a class="home-button" href="grade.html?grade=MYP%201">MYP 1</a>
+          <a class="home-button" href="grade.html?grade=MYP%202">MYP 2</a>
+          <a class="home-button home-button-primary" href="grade.html?grade=MYP%203">MYP 3</a>
+          <a class="home-button" href="grade.html?grade=MYP%204">MYP 4</a>
+          <a class="home-button" href="grade.html?grade=MYP%205">MYP 5</a>
         </div>
+      </div>
+      <div class="hero-preview">
+        <img src="logo.svg" alt="ProdigalMath brand illustration" class="hero-image">
       </div>
     </section>
 
-    <section class="practice-panel">
-      <div class="card profile-card">
-        <div class="profile-header">
-          <p class="eyebrow">Welcome back</p>
-          <h2 id="greetingText">Tell us about yourself</h2>
-        </div>
-        <form id="profileForm" class="profile-form">
-          <div class="profile-group">
-            <label>Pronouns</label>
-            <div class="radio-grid">
-              <label><input type="radio" name="pronoun" value="male"> Male</label>
-              <label><input type="radio" name="pronoun" value="female"> Female</label>
-              <label><input type="radio" name="pronoun" value="other"> Other</label>
-            </div>
-            <input type="text" id="pronounOther" class="hidden" placeholder="Enter your pronouns" autocomplete="off">
-          </div>
-
-          <div class="profile-group">
-            <label for="gradeSelect">Grade level</label>
-            <select id="gradeSelect">
-              <option value="">Select your MYP grade</option>
-              <option value="MYP 1">MYP 1</option>
-              <option value="MYP 2">MYP 2</option>
-              <option value="MYP 3">MYP 3</option>
-              <option value="MYP 4">MYP 4</option>
-              <option value="MYP 5">MYP 5</option>
-            </select>
-          </div>
-
-          <div class="profile-group">
-            <label for="topicInput">Topics you want to learn</label>
-            <textarea id="topicInput" rows="3" placeholder="e.g. quadratic equations, algebraic expressions"></textarea>
-            <label for="topicPdf" class="file-label">Or upload a PDF with your own math notes</label>
-            <input type="file" id="topicPdf" accept="application/pdf">
-            <p class="file-note">Optional. We’ll use the filename to personalize your next session.</p>
-          </div>
-
-          <div class="profile-group">
-            <label for="heardFrom">Where did you hear about ProdigalMath?</label>
-            <select id="heardFrom">
-              <option value="">Choose an option</option>
-              <option value="Friend or family">Friend or family</option>
-              <option value="Teacher or tutor">Teacher or tutor</option>
-              <option value="Social media">Social media</option>
-              <option value="Search engine">Search engine</option>
-              <option value="Other">Other</option>
-            </select>
-            <input type="text" id="heardOther" class="hidden" placeholder="Tell us where" autocomplete="off">
-          </div>
-
-          <div class="profile-group">
-            <label for="goalInput">What is your main goal for this app?</label>
-            <input type="text" id="goalInput" placeholder="e.g. improve grades, complete homework faster" autocomplete="off">
-          </div>
-
-          <div class="profile-group">
-            <label for="practiceFrequency">How often would you like to practice?</label>
-            <select id="practiceFrequency">
-              <option value="">Choose one</option>
-              <option value="Daily">Daily</option>
-              <option value="Several times a week">Several times a week</option>
-              <option value="Weekly">Weekly</option>
-              <option value="A few times a month">A few times a month</option>
-            </select>
-          </div>
-
-          <button type="submit" class="primary-button">Save preferences</button>
-        </form>
-        <p id="profileNotice" class="result-text">These answers help personalize your practice.</p>
+    <section class="home-grid">
+      <div class="home-card">
+        <h2>Choose your syllabus</h2>
+        <p>Each MYP level loads the right units and topics so you can focus on the grade that matches your course.</p>
       </div>
-
-      <div class="card problem-card hidden">
-        <div class="problem-header">
-          <img src="logo.svg" alt="ProdigalMath logo" class="problem-logo">
-          <div>
-            <p class="eyebrow">Problem</p>
-            <h2>Math practice</h2>
-          </div>
-        </div>
-        <p id="problemHint" class="subtext">Solve this one and keep learning.</p>
-        <p class="question">Loading problem...</p>
-        <input type="text" id="answer" placeholder="Type your answer..." autocomplete="off">
-        <button onclick="checkAnswer()">Submit answer</button>
-        <p id="result" class="result-text"></p>
+      <div class="home-card">
+        <h2>Varied problem types</h2>
+        <p>Some questions are multiple choice, others are text answers to develop your range of skills.</p>
       </div>
-
-      <div class="score-panel hidden">
-        <span>Total score</span>
-        <strong id="score">0</strong>
+      <div class="home-card">
+        <h2>Built-in difficulty growth</h2>
+        <p>MYP topics get harder as you move through the grades, with deeper algebra, geometry and reasoning.</p>
       </div>
     </section>
   </main>
-
-  <script src="script.js"></script>
 </body>
 </html>

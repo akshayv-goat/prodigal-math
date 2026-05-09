@@ -34,6 +34,10 @@ function analyzePreferences(profile) {
     recommendations.push(`recommended based on ${profile.heardFrom.toLowerCase()}`);
   }
 
+  if (profile.tuitionInterest === 'Yes') {
+    recommendations.push('tuition guidance and extra support options');
+  }
+
   if (recommendations.length) {
     summary = `AI recommends ${recommendations.join(', ')}.`;
   }
@@ -133,6 +137,16 @@ function validateStep(index) {
   }
 
   if (index === 5) {
+    const tuitionChoice = document.querySelector('input[name="tuitionInterest"]:checked');
+    if (!tuitionChoice) {
+      wizardNotice.textContent = 'Please tell us if you want tuition support.';
+      return false;
+    }
+    profileData.tuitionInterest = tuitionChoice.value;
+    return true;
+  }
+
+  if (index === 6) {
     if (!frequency) {
       wizardNotice.textContent = 'Please choose how often you want to practice.';
       return false;

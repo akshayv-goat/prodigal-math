@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProdigalMath | MYP Topics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="grade-hero">
+      <div class="grade-copy">
+        <p class="eyebrow">Choose your MYP level</p>
+        <h1 id="gradeTitle">Practice topics</h1>
+        <p id="gradeSubtitle">Pick your grade, then select a unit and topic to practice with varied problem styles.</p>
+        <div class="grade-nav" id="gradeNav"></div>
+        <div class="grade-controls">
+          <label for="difficultySelect">Difficulty</label>
+          <select id="difficultySelect">
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+      </div>
+      <div class="grade-preview">
+        <img src="logo.svg" alt="ProdigalMath learning preview" class="grade-preview-image">
+      </div>
+    </section>
+
+    <section class="unit-section">
+      <div class="unit-frame">
+        <div class="section-header">
+          <p class="eyebrow">Units</p>
+          <h2 id="unitTitle">Select a unit</h2>
+        </div>
+        <div class="unit-list" id="unitList"></div>
+      </div>
+
+      <div class="topic-frame">
+        <div class="section-header">
+          <p class="eyebrow">Topics</p>
+          <h2 id="topicTitle">Choose a topic</h2>
+        </div>
+        <div class="topic-list" id="topicList"></div>
+      </div>
+    </section>
+
+    <section class="practice-section hidden" id="practiceSection">
+      <div class="section-header">
+        <p class="eyebrow">Problem</p>
+        <h2 id="problemTopic">Ready when you are</h2>
+      </div>
+      <div class="practice-card">
+        <div class="practice-info">
+          <span id="problemType" class="info-pill">Type</span>
+          <span id="problemDifficulty" class="info-pill">Level</span>
+        </div>
+        <p id="practiceQuestion" class="question">Select a topic to begin.</p>
+        <div id="answerArea" class="answer-area"></div>
+        <div class="practice-actions">
+          <button id="submitAnswer" class="primary-button">Submit</button>
+          <button id="nextProblem" class="secondary-button hidden">Next problem</button>
+        </div>
+        <p id="practiceFeedback" class="result-text"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="grade.js"></script>
+</body>
+</html>
