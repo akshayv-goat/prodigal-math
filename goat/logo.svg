@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 260" role="img" aria-label="ProdigalMath logo">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="capGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+  <path d="M120 16c-43 0-78 23-98 42-11 10-18 29-18 47v77c0 37 24 83 57 105 21 14 39 21 59 21s38-7 59-21c33-22 57-68 57-105V105c0-18-7-37-18-47-20-19-55-42-98-42z" fill="url(#grad)"/>
+  <path d="M64 103c0-20 16-36 36-36s36 16 36 36-16 36-36 36-36-16-36-36zm40-9.5c-5.8 0-10.5 4.7-10.5 10.5S98.2 114 104 114s10.5-4.7 10.5-10.5S109.8 93.5 104 93.5z" fill="#ffffff" opacity="0.95"/>
+  <path d="M60 136c0-1.1.9-2 2-2h116c1.1 0 2 .9 2 2v9.7c0 1.1-.9 2-2 2H62c-1.1 0-2-.9-2-2V136z" fill="#ffffff" opacity="0.95"/>
+  <path d="M66 146.5s24-4.5 42-4.5 42 4.5 42 4.5 10 2.5 10 14.5H56c0-12 10-14.5 10-14.5z" fill="#ffffff" opacity="0.96"/>
+  <path d="M162 146c-6 0-20.2 4-40 4s-34-4-40-4c-11 0-20 9-20 20v18c0 2.8 2.2 5 5 5h110c2.8 0 5-2.2 5-5v-18c0-11-9-20-20-20z" fill="url(#capGrad)"/>
+  <path d="M120 108l46-18-46-18-46 18 46 18zm-38-17 38-14 38 14-38 14-38-14z" fill="#ffffff"/>
+  <path d="M78 178h84v4H78z" fill="#e2e8f0" opacity="0.9"/>
+</svg>

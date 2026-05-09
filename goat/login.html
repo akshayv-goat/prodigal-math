@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - ProdigalMath</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell page-center">
+    <section class="auth-frame">
+      <div class="auth-intro">
+        <div class="brand-header">
+          <img src="logo.svg" alt="ProdigalMath logo" class="brand-logo">
+          <div>
+            <p class="eyebrow">Welcome back</p>
+            <h1>ProdigalMath</h1>
+          </div>
+        </div>
+        <p>Sign in or create a local account to continue practicing algebra in a polished, distraction-free experience.</p>
+        <div class="auth-badge">Saved in your browser only</div>
+      </div>
+
+      <div class="card login-card">
+        <form id="loginForm" class="login-form" autocomplete="on">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Choose a username" required>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Create a password" required>
+
+          <div class="login-actions">
+            <button type="submit">Continue</button>
+          </div>
+        </form>
+        <p id="loginMessage" class="login-message"></p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const accountStorageKey = 'prodgicalmathAccounts';
+    const emailInput = document.getElementById('email');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const loginMessage = document.getElementById('loginMessage');
+
+    function getStoredAccounts() {
+      const raw = localStorage.getItem(accountStorageKey);
+      return raw ? JSON.parse(raw) : {};
+    }
+
+    function setStoredAccounts(accounts) {
+      localStorage.setItem(accountStorageKey, JSON.stringify(accounts));
+    }
+
+    function setMessage(text, color) {
+      loginMessage.textContent = text;
+      loginMessage.style.color = color;
+    }
+
+    function loadAccountByEmail(email) {
+      const accounts = getStoredAccounts();
+      return accounts[email.toLowerCase()] || null;
+    }
+
+    function saveAccount(email, username, password) {
+      const accounts = getStoredAccounts();
+      accounts[email.toLowerCase()] = { username, password };
+      setStoredAccounts(accounts);
+      localStorage.setItem('prodgicalmathLastEmail', email.toLowerCase());
+    }
+
+    function prefillLastEmail() {
+      const lastEmail = localStorage.getItem('prodgicalmathLastEmail');
+      if (lastEmail) {
+        emailInput.value = lastEmail;
+        fillAccountFields(lastEmail);
+      }
+    }
+
+    function fillAccountFields(email) {
+      const account = loadAccountByEmail(email);
+      if (account) {
+        usernameInput.value = account.username;
+        passwordInput.value = account.password;
+        setMessage('Account loaded for this email. Password is remembered.', '#2563eb');
+      } else {
+        usernameInput.value = '';
+        passwordInput.value = '';
+        setMessage('New email. Create your account by choosing a username and password.', '#334155');
+      }
+    }
+
+    emailInput.addEventListener('change', function() {
+      const email = emailInput.value.trim().toLowerCase();
+      if (email) {
+        fillAccountFields(email);
+      }
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = emailInput.value.trim().toLowerCase();
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (!email || !username || !password) {
+        setMessage('Please enter email, username, and password.', 'red');
+        return;
+      }
+
+      const account = loadAccountByEmail(email);
+
+      if (account) {
+        if (account.username !== username) {
+          setMessage('This email is already registered with a different username.', 'red');
+          return;
+        }
+        if (account.password !== password) {
+          setMessage('Wrong password for this email. Please try again.', 'red');
+          return;
+        }
+
+        setMessage('Login successful! Redirecting...', '#2563eb');
+      } else {
+        saveAccount(email, username, password);
+        setMessage('Account created. Redirecting to ProdigalMath...', '#2563eb');
+      }
+
+      localStorage.setItem('prodgicalmathLoggedInUser', username);
+
+      setTimeout(function() {
+        window.location.href = 'dashboard.html';
+      }, 800);
+    });
+
+    window.onload = prefillLastEmail;
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProdigalMath</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Smart practice for algebra</p>
+        <h1>ProdigalMath</h1>
+        <p>Train your skills with fast, friendly algebra challenges and instant feedback.</p>
+      </div>
+      <div class="hero-card">
+        <div class="topic-selection">
+          <label for="category">Category</label>
+          <select id="category">
+            <option value="Algebra">Algebra</option>
+          </select>
+          <label for="subtopic">Subtopic</label>
+          <select id="subtopic">
+            <option value="Quadratic Equations">Quadratic Equations</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="practice-panel">
+      <div class="card problem-card">
+        <p class="question">Loading problem...</p>
+        <input type="text" id="answer" placeholder="Type your answer..." autocomplete="off">
+        <button onclick="checkAnswer()">Submit answer</button>
+        <p id="result" class="result-text"></p>
+      </div>
+
+      <div class="score-panel">
+        <span>Total score</span>
+        <strong id="score">0</strong>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
